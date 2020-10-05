@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "944976634524",
+    "firebase_url": "https://propertymanagementapp-b0567.firebaseio.com",
+    "project_id": "propertymanagementapp-b0567",
+    "storage_bucket": "propertymanagementapp-b0567.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944976634524:android:0becd8cffed3ff9dafc359",
+        "android_client_info": {
+          "package_name": "com.example.propertymanagementapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944976634524-105c11u6t46j4n8e9ve7m51tm0ohn0uq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjL5c-LlO0oREBJmubbG7EXFBfyY139uc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944976634524-105c11u6t46j4n8e9ve7m51tm0ohn0uq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

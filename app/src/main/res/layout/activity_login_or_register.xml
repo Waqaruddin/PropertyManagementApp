@@ -1,0 +1,40 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:id="@+id/button_register"
+    android:text="Sign up"
+    android:layout_centerInParent="true"
+    android:background="@drawable/button_border"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:id="@+id/text_view_or"
+            android:layout_below="@id/button_register"
+            android:layout_centerHorizontal="true"
+            android:textStyle="italic"/>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_login"
+        android:text="Sign in"
+        android:background="@drawable/button_border"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:layout_below="@id/text_view_or"/>
+
+
+
+</RelativeLayout>

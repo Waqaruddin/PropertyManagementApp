@@ -1,0 +1,62 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Sign in"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_text_email"
+        android:hint="Email"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_text_password"
+        android:hint="Password"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/edit_text_email"
+        android:layout_margin="20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_login"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/edit_text_password"
+        android:background="@drawable/button_border"
+        android:layout_margin="20dp"
+        android:text="Sign in"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New user?"
+        android:id="@+id/text_view_new_user"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/button_login"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here"
+        android:id="@+id/text_view_click_here"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/button_login"
+        android:layout_toRightOf="@id/text_view_new_user"/>
+
+</RelativeLayout>
