@@ -1,6 +1,6 @@
-package com.example.propertymanagementapp.api
+package com.example.propertymanagementapp.data.network
 
-import com.example.propertymanagementapp.models.*
+import com.example.propertymanagementapp.data.models.*
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

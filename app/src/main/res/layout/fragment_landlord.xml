@@ -2,7 +2,6 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +13,7 @@
         android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:textAlignment="center"/>
+
 
     <EditText
         android:layout_width="match_parent"
@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/edit_text_password"
             android:hint="Password"
+            android:inputType="textPassword"
             android:layout_centerInParent="true"
             android:layout_margin="20dp"/>
 

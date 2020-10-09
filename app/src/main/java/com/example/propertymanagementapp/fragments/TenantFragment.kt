@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.activities.LoginActivity
-import com.example.propertymanagementapp.api.MyApi
-import com.example.propertymanagementapp.models.RegisterResponse
-import com.example.propertymanagementapp.models.Tenant
+import com.example.propertymanagementapp.ui.auth.LoginActivity
+import com.example.propertymanagementapp.data.network.MyApi
+import com.example.propertymanagementapp.data.models.RegisterResponse
+import com.example.propertymanagementapp.data.models.Tenant
 import kotlinx.android.synthetic.main.fragment_tenant.view.*
 import retrofit2.Call
 import retrofit2.Callback

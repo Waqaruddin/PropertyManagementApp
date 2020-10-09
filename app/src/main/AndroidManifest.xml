@@ -16,25 +16,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.TransactionsScreenActivity"></activity>
-        <activity android:name=".activities.TenantsScreenActivity" />
-        <activity android:name=".activities.PropertyScreenActivity" />
-        <activity android:name=".activities.HomeScreenActivity">
+        <activity android:name=".ui.home.TransactionsScreenActivity"></activity>
+        <activity android:name=".ui.home.TenantsScreenActivity" />
+        <activity android:name=".ui.home.PropertyScreenActivity" />
+        <activity android:name=".ui.home.HomeScreenActivity">
+
+        </activity>
+        <activity android:name=".ui.home.AddVendorActivity" />
+        <activity android:name=".ui.home.ToDoListActivity" />
+        <activity android:name=".ui.home.LoginOrRegisterActivity" />
+        <activity android:name=".ui.auth.RegisterActivity" />
+        <activity android:name=".ui.auth.LoginActivity" />
+        <activity android:name=".ui.home.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AddVendorActivity" />
-        <activity android:name=".activities.ToDoListActivity" />
-        <activity android:name=".activities.LoginOrRegisterActivity" />
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SplashScreenActivity">
-
-        </activity>
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".ui.home.MainActivity" />
     </application>
 
 </manifest>

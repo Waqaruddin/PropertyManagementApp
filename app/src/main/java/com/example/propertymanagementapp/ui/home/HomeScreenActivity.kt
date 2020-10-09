@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.activities
+package com.example.propertymanagementapp.ui.home
 
 import android.Manifest
 import android.app.Activity
@@ -7,14 +7,12 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.propertymanagementapp.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.bottom_sheet.*
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
 
 class HomeScreenActivity : AppCompatActivity(){
@@ -43,18 +41,6 @@ class HomeScreenActivity : AppCompatActivity(){
         }
     }
 
-//    override fun onClick(view: View) {
-//        when (view) {
-//            button_add_photo -> {
-//                val bottomSheetDialog = BottomSheetDialog(this)
-//                val view = layoutInflater.inflate(R.layout.bottom_sheet, null)
-//                bottomSheetDialog.setContentView(view)
-//                bottomSheetDialog.show()
-//            }
-////            button_open_camera -> checkForCameraPermission()
-//            button_open_gallery -> checkForGalleryPermission()
-//        }
-//    }
 
     private fun checkForGalleryPermission() {
         var permission =

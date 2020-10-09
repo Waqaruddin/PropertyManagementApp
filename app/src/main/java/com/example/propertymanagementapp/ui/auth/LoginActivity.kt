@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.activities
+package com.example.propertymanagementapp.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.api.MyApi
-import com.example.propertymanagementapp.models.LoginResponse
-import com.example.propertymanagementapp.models.User
+import com.example.propertymanagementapp.data.network.MyApi
+import com.example.propertymanagementapp.data.models.LoginResponse
+import com.example.propertymanagementapp.data.models.User
+import com.example.propertymanagementapp.ui.home.HomeScreenActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback

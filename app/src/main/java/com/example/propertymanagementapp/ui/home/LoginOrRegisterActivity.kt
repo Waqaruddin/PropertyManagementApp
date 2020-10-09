@@ -1,9 +1,11 @@
-package com.example.propertymanagementapp.activities
+package com.example.propertymanagementapp.ui.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.propertymanagementapp.R
+import com.example.propertymanagementapp.ui.auth.LoginActivity
+import com.example.propertymanagementapp.ui.auth.RegisterActivity
 import kotlinx.android.synthetic.main.activity_login_or_register.*
 
 class LoginOrRegisterActivity : AppCompatActivity() {

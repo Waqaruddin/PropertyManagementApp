@@ -1,12 +1,12 @@
-package com.example.propertymanagementapp.activities
+package com.example.propertymanagementapp.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.propertymanagementapp.R
 
-class TransactionsScreenActivity : AppCompatActivity() {
+class TenantsScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_transactions_screen)
+        setContentView(R.layout.activity_tenants_screen)
     }
 }

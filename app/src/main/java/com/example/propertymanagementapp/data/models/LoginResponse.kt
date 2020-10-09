@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.models
+package com.example.propertymanagementapp.data.models
 
 data class LoginResponse(
     val token: String,

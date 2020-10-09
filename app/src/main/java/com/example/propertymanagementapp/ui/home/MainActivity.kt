@@ -1,12 +1,12 @@
-package com.example.propertymanagementapp.activities
+package com.example.propertymanagementapp.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.propertymanagementapp.R
 
-class PropertyScreenActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_property_screen)
+        setContentView(R.layout.activity_main)
     }
 }
