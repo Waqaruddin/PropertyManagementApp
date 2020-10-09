@@ -10,11 +10,14 @@ class AuthViewModel: ViewModel() {
     var authListener:AuthListener? = null
 
     fun onLoginButtonClicked(view: View){
-        authListener?.onStarted()
+
         if(email.isNullOrEmpty() || password.isNullOrEmpty()){
             authListener?.failure("Email and password are required")
+            return
+        }else{
+            val loginResponse = UserRepository().login(email!!, password!!)
+            authListener?.onSuccess(loginResponse)
         }
-        val loginResponse = UserRepository().login(email!!, password!!)
-        authListener?.onSuccess(loginResponse)
+
     }
 }
