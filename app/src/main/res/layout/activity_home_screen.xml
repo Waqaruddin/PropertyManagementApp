@@ -7,17 +7,26 @@
         android:layout_height="wrap_content"
         android:text="Home Screen"
         android:textSize="32dp"
+        android:layout_margin="20dp"
         android:layout_alignParentTop="true"
         android:textColor="#000"
         android:id="@+id/text_view_home_screen"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_logout"
+        android:text="logout"
+        android:layout_below="@id/text_view_home_screen"
+        android:layout_margin="20dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add photo"
         android:id="@+id/button_add_photo"
         android:layout_margin="20dp"
-        android:layout_below="@id/text_view_home_screen"/>
+        android:layout_below="@id/button_logout"/>
 
     <ImageView
         android:layout_width="200dp"
