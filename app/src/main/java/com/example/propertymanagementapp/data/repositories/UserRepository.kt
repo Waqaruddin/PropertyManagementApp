@@ -16,27 +16,28 @@ class UserRepository {
 
     fun login(email: String, password: String): LiveData<String> {
         var loginResponse = MutableLiveData<String>()
-        var user = User(email, password)
+        var user = User(email = email, password = password)
 
-        MyApi().login(email, password)
-            .enqueue(object : Callback<ResponseBody> {
+        MyApi().login(user)
+            .enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
                 ) {
                     if (response.isSuccessful) {
-
                         loginResponse.value = "Login Successful"
-                        Log.d("abc", response.body().toString())
+                        Log.d("abc", response.body()?.user?.name.toString())
                     }
                 }
 
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     loginResponse.value = t.message
                 }
 
             })
         return loginResponse
     }
+
+
 }
 

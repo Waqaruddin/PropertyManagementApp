@@ -13,23 +13,21 @@ import retrofit2.http.POST
 
 interface MyApi {
 
+    @POST("auth/login")
+    fun login(@Body user: User) : Call<LoginResponse>
+//
 //    @FormUrlEncoded
 //    @POST("auth/login")
-//    fun login(@Body user: User) : Call<LoginResponse>
-
-    @FormUrlEncoded
-    @POST("auth/login")
-    fun login(
-        @Field("email") email:String,
-        @Field("password") password:String
-    ):Call<ResponseBody>
+//    fun login(
+//        @Field("email") email:String,
+//        @Field("password") password:String
+//    ):Call<ResponseBody>
 
 
-    @FormUrlEncoded
     @POST("auth/register")
     fun registerLandlord(@Body landlord:Landlord) : Call<RegisterResponse>
 
-    @FormUrlEncoded
+
     @POST("auth/register")
     fun registerTenant(@Body tenant:Tenant) : Call<RegisterResponse>
 
