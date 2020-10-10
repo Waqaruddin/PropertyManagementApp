@@ -9,7 +9,6 @@ import com.example.propertymanagementapp.helpers.SessionManager
 
 class SplashScreenActivity : AppCompatActivity() {
     private val delayedTime:Long = 3000
-    lateinit var sessionManager: SessionManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -24,12 +23,14 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun checkLogin() {
-        sessionManager = SessionManager(this)
+         var sessionManager = SessionManager(this)
 
         if(sessionManager.isLoggedIn()){
             startActivity(Intent(this, HomeScreenActivity::class.java))
+            finish()
         }else{
             startActivity(Intent(this, LoginOrRegisterActivity::class.java))
+            finish()
         }
     }
 }

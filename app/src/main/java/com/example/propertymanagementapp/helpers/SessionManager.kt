@@ -13,6 +13,7 @@ class SessionManager(private var mContext: Context) {
 
     fun saveUserLogin(token:String){
         editor.putString(KEY_TOKEN, token)
+        editor.putBoolean(KEY_IS_LOGGED_IN, true)
         editor.commit()
     }
 
