@@ -14,6 +14,7 @@ import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.data.models.LoginResponse
 import com.example.propertymanagementapp.data.models.User
 import com.example.propertymanagementapp.databinding.ActivityLoginBinding
+import com.example.propertymanagementapp.helpers.SessionManager
 import com.example.propertymanagementapp.ui.home.HomeScreenActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -21,6 +22,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity(), AuthListener {
+    lateinit var sessionManager: SessionManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
@@ -29,6 +31,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         val viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
         binding.viewModel = viewModel
         viewModel.authListener = this
+        sessionManager = SessionManager(this)
 
         init()
     }
@@ -75,6 +78,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     override fun onSuccess(response: LiveData<String>) {
         response.observe(this, Observer {
+
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, HomeScreenActivity::class.java))
         })
