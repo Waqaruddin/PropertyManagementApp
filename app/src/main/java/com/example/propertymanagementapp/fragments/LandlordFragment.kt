@@ -7,27 +7,40 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.ui.auth.LoginActivity
 import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.data.models.Landlord
 import com.example.propertymanagementapp.data.models.RegisterResponse
+import com.example.propertymanagementapp.databinding.FragmentLandlordBinding
+import com.example.propertymanagementapp.helpers.toastShort
+import com.example.propertymanagementapp.ui.auth.AuthListener
+import com.example.propertymanagementapp.ui.auth.AuthViewModel
 import kotlinx.android.synthetic.main.fragment_landlord.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class LandlordFragment : Fragment() {
+class LandlordFragment : Fragment(), AuthListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_landlord, container, false)
-        init(view)
-        return view
+        //val view = inflater.inflate(R.layout.fragment_landlord, container, false)
+        //init(view)
+
+        var binding:FragmentLandlordBinding = DataBindingUtil.setContentView(activity!!, R.layout.fragment_landlord)
+        val viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
+        binding.viewModel = viewModel
+        viewModel.authListener = this
+        return binding.root
     }
 
     private fun init(view: View) {
@@ -70,6 +83,21 @@ class LandlordFragment : Fragment() {
             startActivity(Intent(activity, LoginActivity::class.java))
         }
 
+    }
+
+    override fun onStarted() {
+        context!!.toastShort("Registration started")
+    }
+
+    override fun onSuccess(response: LiveData<String>) {
+        response.observe(this, Observer {
+            context!!.toastShort("Registration Successful")
+            startActivity(Intent(context, LoginActivity::class.java))
+        })
+    }
+
+    override fun failure(message: String) {
+        context!!.toastShort(message)
     }
 
 

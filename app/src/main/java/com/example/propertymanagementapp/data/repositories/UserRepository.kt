@@ -4,8 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.propertymanagementapp.data.models.LoginResponse
-import com.example.propertymanagementapp.data.models.User
+import com.example.propertymanagementapp.data.models.*
 import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.helpers.SessionManager
 import okhttp3.ResponseBody
@@ -45,7 +44,52 @@ class UserRepository {
         return loginResponse
     }
 
-    fun register(name:String, email:String, password:String){
+    fun registerTenant(name:String, email:String, password:String, landlordEmail:String,  type:String):LiveData<String>{
+        var registerResponse = MutableLiveData<String>()
+        var registerTenant = Tenant(name, email, password, landlordEmail, type)
+
+        MyApi().registerTenant(registerTenant)
+            .enqueue(object:Callback<RegisterResponse>{
+                override fun onResponse(
+                    call: Call<RegisterResponse>,
+                    response: Response<RegisterResponse>
+                ) {
+                    if(response.isSuccessful){
+                        registerResponse.value = "Registered Successfully"
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    registerResponse.value = t.message
+                }
+
+            })
+        return registerResponse
+
+    }
+
+
+    fun registerLandlord(name:String, email:String, password:String, type:String):LiveData<String>{
+        var registerResponse = MutableLiveData<String>()
+        var registerLandlord = Landlord(name, email, password, type)
+
+        MyApi().registerLandlord(registerLandlord)
+            .enqueue(object:Callback<RegisterResponse>{
+                override fun onResponse(
+                    call: Call<RegisterResponse>,
+                    response: Response<RegisterResponse>
+                ) {
+                    if(response.isSuccessful){
+                        registerResponse.value = "Registered Successfully"
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    registerResponse.value = t.message
+                }
+
+            })
+        return registerResponse
 
     }
 

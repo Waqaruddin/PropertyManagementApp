@@ -16,6 +16,8 @@ class AdapterFragment(fm:FragmentManager):FragmentPagerAdapter(fm){
             0 -> LandlordFragment()
             1 -> TenantFragment()
             else -> LandlordFragment()
+//            0 -> LandlordFragment()
+//            else-> LandlordFragment()
         }
     }
 
@@ -24,6 +26,8 @@ class AdapterFragment(fm:FragmentManager):FragmentPagerAdapter(fm){
             0 -> "Landlord"
             1 -> "Tenant"
             else -> "Landlord"
+//            0 -> "Landlord"
+//            else -> "Landlord"
         }
     }
 

@@ -9,6 +9,8 @@ class AuthViewModel : ViewModel() {
     var password: String? = null
     var authListener: AuthListener? = null
     var name:String? = null
+    var type:String? = null
+    var landlordEmail:String? = null
 
     fun onLoginButtonClicked(view: View) {
 
@@ -24,10 +26,25 @@ class AuthViewModel : ViewModel() {
 
     }
 
-//    fun onLandlordRegisterButtonClicked(view:View){
-//        if(name.isNullOrEmpty() || password.isNullOrEmpty() || name.isNullOrEmpty()){
-//            authListener?.failure("All fields are required")
-//        }
-//        var registerResposne = UserRepository
-//    }
+    fun onRegisterLandlordClicked(view:View){
+        if(email.isNullOrEmpty() || password.isNullOrEmpty() || name.isNullOrEmpty() || landlordEmail.isNullOrEmpty()){
+            authListener?.failure("All fields are required")
+        }
+        var registerResponse = UserRepository().registerLandlord(name!!, email!!, password!! , type!!)
+        authListener?.onSuccess(registerResponse)
+    }
+
+
+    fun onRegisterTenantClicked(view:View){
+        if(email.isNullOrEmpty() || password.isNullOrEmpty() || name.isNullOrEmpty() || landlordEmail.isNullOrEmpty()){
+            authListener?.failure("All fields are required")
+        }
+        var registerResponse = UserRepository().registerTenant(name!!, email!!, password!! , type!!, landlordEmail!!)
+        authListener?.onSuccess(registerResponse)
+    }
+
+
+
+
+
 }

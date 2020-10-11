@@ -15,6 +15,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun init() {
+
         adapterFragments = AdapterFragment(supportFragmentManager)
         view_pager.adapter = adapterFragments
         tab_layout.setupWithViewPager(view_pager)
