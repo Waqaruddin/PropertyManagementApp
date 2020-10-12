@@ -2,6 +2,7 @@ package com.example.propertymanagementapp.data.network
 
 import com.example.propertymanagementapp.app.Config
 import com.example.propertymanagementapp.data.models.*
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -41,7 +42,9 @@ interface MyApi {
         operator fun invoke() : MyApi {
             return Retrofit.Builder()
                 .baseUrl(Config.BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(ApiWorker.client)
                 .build()
                 .create(MyApi::class.java)
         }
