@@ -28,21 +28,23 @@ import retrofit2.Response
 
 class TenantFragment : Fragment(), AuthListener {
 
+lateinit var mBinding:FragmentTenantBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+         //Inflate the layout for this fragment
 //        val view =  inflater.inflate(R.layout.fragment_tenant, container, false)
 //        init(view)
 //        return view
 
-        var binding:FragmentTenantBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_tenant, container, false)
-        var viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
-        binding.viewModel = viewModel
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_tenant, container, false)
+        val viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
+        mBinding.viewModel = viewModel
         viewModel.authListener= this
-        return binding.root
+       return mBinding.root
 
 
     }
@@ -87,18 +89,18 @@ class TenantFragment : Fragment(), AuthListener {
 
 
     override fun onStarted() {
-        context!!.toastShort("Registration started")
+        mBinding.root.context!!.toastShort("Registration started")
     }
 
     override fun onSuccess(response: LiveData<String>) {
         response.observe(this, Observer {
-            context!!.toastShort("Registration Successful")
-            startActivity(Intent(context, LoginActivity::class.java))
+            mBinding.root.context!!.toastShort("Registration Successful")
+            startActivity(Intent(mBinding.root.context, LoginActivity::class.java))
         })
     }
 
     override fun failure(message: String) {
-        context!!.toastShort(message)
+        mBinding.root.context!!.toastShort(message)
     }
 
 

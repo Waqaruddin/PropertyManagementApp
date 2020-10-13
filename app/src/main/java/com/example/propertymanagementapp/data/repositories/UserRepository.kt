@@ -44,9 +44,9 @@ class UserRepository {
         return loginResponse
     }
 
-    fun registerTenant(name:String, email:String, password:String, landlordEmail:String,  type:String):LiveData<String>{
+    fun registerTenant(name:String, email:String, password:String, landlordEmail:String, type:String):LiveData<String>{
         var registerResponse = MutableLiveData<String>()
-        var registerTenant = Tenant(name, email, password, landlordEmail, type)
+        var registerTenant = Tenant(name = name, email = email, password = password, landlordEmail = landlordEmail, type = "tenant")
 
         MyApi().registerTenant(registerTenant)
             .enqueue(object:Callback<RegisterResponse>{
@@ -71,7 +71,7 @@ class UserRepository {
 
     fun registerLandlord(name:String, email:String, password:String, type:String):LiveData<String>{
         var registerResponse = MutableLiveData<String>()
-        var registerLandlord = Landlord(name, email, password, type)
+        var registerLandlord = Landlord(name = name, email = email, password = password, type =  "landlord")
 
         MyApi().registerLandlord(registerLandlord)
             .enqueue(object:Callback<RegisterResponse>{

@@ -1,6 +1,8 @@
 package com.example.propertymanagementapp.helpers
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.support.v4.media.session.MediaSessionCompat.KEY_TOKEN
 
 class SessionManager(private var mContext: Context) {
 
@@ -24,6 +26,11 @@ class SessionManager(private var mContext: Context) {
     fun logout(){
         editor.clear()
         editor.commit()
+    }
+
+    companion object{
+        @SuppressLint("RestrictedApi")
+        const val TOKEN = KEY_TOKEN
     }
 
 }

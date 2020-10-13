@@ -1,6 +1,7 @@
 package com.example.propertymanagementapp.data.network
 
 import com.example.propertymanagementapp.app.Config
+import com.example.propertymanagementapp.helpers.SessionManager.Companion.TOKEN
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -28,7 +29,7 @@ object ApiWorker{
                             val requestBuilder = original.newBuilder()
                                 .addHeader(
                                     "Authentication",
-                                    "Bearer" + Config.ACCESS_TOKEN
+                                    "Bearer $TOKEN"
                                 )
                                 .addHeader("Accept", "application/json")
                                 .addHeader("Content-Type", "application/json")
