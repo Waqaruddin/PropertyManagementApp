@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit
 
 
 object ApiWorker{
+
     private const val REQUEST_TIMEOUT:Long = 60
     private var okHttpClient: OkHttpClient? = null
     val client: OkHttpClient

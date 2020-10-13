@@ -3,24 +3,23 @@
     package="com.example.propertymanagementapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.TransactionsScreenActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.home.PropertyListActivity"></activity>
+        <activity android:name=".ui.home.TransactionsScreenActivity" />
         <activity android:name=".ui.home.TenantsScreenActivity" />
         <activity android:name=".ui.home.PropertyScreenActivity" />
-        <activity android:name=".ui.home.HomeScreenActivity">
-
-        </activity>
+        <activity android:name=".ui.home.AddPropertyActivity"></activity>
         <activity android:name=".ui.home.AddVendorActivity" />
         <activity android:name=".ui.home.ToDoListActivity" />
         <activity android:name=".ui.home.LoginOrRegisterActivity" />
@@ -33,7 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.MainActivity" />
+        <activity android:name=".ui.home.HomeScreenActivity" />
     </application>
 
 </manifest>

@@ -3,23 +3,16 @@ package com.example.propertymanagementapp.ui.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.data.network.MyApi
-import com.example.propertymanagementapp.data.models.LoginResponse
-import com.example.propertymanagementapp.data.models.User
 import com.example.propertymanagementapp.databinding.ActivityLoginBinding
 import com.example.propertymanagementapp.helpers.SessionManager
-import com.example.propertymanagementapp.ui.home.HomeScreenActivity
+import com.example.propertymanagementapp.ui.home.AddPropertyActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LoginActivity : AppCompatActivity(), AuthListener {
     lateinit var sessionManager: SessionManager
@@ -80,7 +73,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         response.observe(this, Observer {
 
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomeScreenActivity::class.java))
+            startActivity(Intent(this, AddPropertyActivity::class.java))
         })
     }
 
