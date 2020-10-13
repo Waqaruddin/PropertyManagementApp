@@ -12,6 +12,8 @@ import io.reactivex.schedulers.Schedulers
 
 class PropertyRepository{
 
+
+
     fun addProperty(address:String):LiveData<String>{
         var propertyResponse = MutableLiveData<String>()
         var property = MyProperty(address = address)

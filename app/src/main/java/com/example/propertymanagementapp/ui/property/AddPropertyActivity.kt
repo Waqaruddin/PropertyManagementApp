@@ -3,10 +3,12 @@ package com.example.propertymanagementapp.ui.property
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,19 +36,21 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.io.File
 
-class AddPropertyActivity : AppCompatActivity(), PropertyListener{
+class AddPropertyActivity : AppCompatActivity(), PropertyListener {
     lateinit var sessionManager: SessionManager
     private val CAMERA_REQUEST_CODE = 100
     private val IMAGE_PICK_CODE = 101
-    var uriPath:String? = null
+    var uriPath: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.activity_add_property)
+        // setContentView(R.layout.activity_add_property)
         sessionManager = SessionManager(this)
 
-        val binding:ActivityAddPropertyBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_property)
+        val binding: ActivityAddPropertyBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_add_property)
         val viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
         binding.viewModel = viewModel
         viewModel.propertyListener = this
@@ -59,16 +63,16 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         val view = layoutInflater.inflate(R.layout.bottom_sheet, null)
         bottomSheetDialog.setContentView(view)
 
-        button_add_photo.setOnClickListener{
+        button_add_photo.setOnClickListener {
             bottomSheetDialog.show()
         }
-        view.button_open_camera.setOnClickListener{
+        view.button_open_camera.setOnClickListener {
             checkForCameraPermission()
         }
-        view.button_open_gallery.setOnClickListener{
+        view.button_open_gallery.setOnClickListener {
             checkForGalleryPermission()
         }
-        button_logout.setOnClickListener{
+        button_logout.setOnClickListener {
             dialogLogout()
         }
     }
@@ -77,13 +81,13 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         var builder = AlertDialog.Builder(this)
         builder.setTitle("Logout")
         builder.setMessage("Are you sure you want to logout?")
-        builder.setNegativeButton("No", object:DialogInterface.OnClickListener{
+        builder.setNegativeButton("No", object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 dialog?.dismiss()
             }
 
         })
-        builder.setPositiveButton("Yes", object:DialogInterface.OnClickListener{
+        builder.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 sessionManager.logout()
                 startActivity(Intent(applicationContext, LoginOrRegisterActivity::class.java))
@@ -148,21 +152,25 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        when(requestCode){
-            CAMERA_REQUEST_CODE ->{
-                if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(applicationContext, "permission denied", Toast.LENGTH_SHORT).show()
+        when (requestCode) {
+            CAMERA_REQUEST_CODE -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(applicationContext, "permission denied", Toast.LENGTH_SHORT)
+                        .show()
 
-                }else{
-                    Toast.makeText(applicationContext, "permission granted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(applicationContext, "permission granted", Toast.LENGTH_SHORT)
+                        .show()
 
                 }
             }
-            IMAGE_PICK_CODE ->{
-                if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(applicationContext, "permission denied", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(applicationContext, "permission granted", Toast.LENGTH_SHORT).show()
+            IMAGE_PICK_CODE -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(applicationContext, "permission denied", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Toast.makeText(applicationContext, "permission granted", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
@@ -172,11 +180,14 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_view.setImageURI(data?.data)
-            //uri path
-            //uriPath =  data?.data?.path
-            uriPath = getRealPathFromURI(data?.data)
-            uploadImage(uriPath!!)
-            //Log.d("abc", uriPath.toString())
+
+//            //uri path
+//            uriPath = getRealPathFromURI(data?.data)
+//            uploadImage(uriPath!!)
+//            //Log.d("abc", uriPath.toString())
+        } else if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            image_view.setImageBitmap(imageBitmap)
         }
     }
 
@@ -197,17 +208,17 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
     }
 
     // using retrofit and api
-    fun uploadImage(path:String){
+    fun uploadImage(path: String) {
         var file = File(path)
         var requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
         var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
         MyApi().uploadImage(body)
-            .enqueue(object:Callback<ResponseBody>{
+            .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(
                     call: Call<ResponseBody>?,
                     response: Response<ResponseBody>?
                 ) {
-                    if(response!!.isSuccessful){
+                    if (response!!.isSuccessful) {
                         Log.d("abc", response.body().string())
                     }
                 }
@@ -225,5 +236,14 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         cursor!!.moveToFirst()
         val idx: Int = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
         return cursor.getString(idx)
+    }
+
+    // get URI from bitmap
+    fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path: String =
+            MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
+        return Uri.parse(path)
     }
 }
