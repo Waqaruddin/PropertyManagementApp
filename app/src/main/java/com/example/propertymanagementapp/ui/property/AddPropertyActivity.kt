@@ -12,21 +12,32 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
+import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
 import com.example.propertymanagementapp.ui.home.LoginOrRegisterActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_add_property.*
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
 
-class AddPropertyActivity : AppCompatActivity(){
+class AddPropertyActivity : AppCompatActivity(), PropertyListener{
     lateinit var sessionManager: SessionManager
     private val CAMERA_REQUEST_CODE = 100
     private val IMAGE_PICK_CODE = 101
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_property)
+       // setContentView(R.layout.activity_add_property)
         sessionManager = SessionManager(this)
+
+        val binding:ActivityAddPropertyBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_property)
+        val viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
+        binding.viewModel = viewModel
+        viewModel.propertyListener = this
+
         init()
     }
 
@@ -149,5 +160,21 @@ class AddPropertyActivity : AppCompatActivity(){
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_view.setImageURI(data?.data)
         }
+    }
+
+    override fun onStarted() {
+        Toast.makeText(this, "Adding property started", Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun onSuccess(response: LiveData<String>) {
+        response.observe(this, Observer {
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, PropertyListActivity::class.java))
+        })
+    }
+
+    override fun failure(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

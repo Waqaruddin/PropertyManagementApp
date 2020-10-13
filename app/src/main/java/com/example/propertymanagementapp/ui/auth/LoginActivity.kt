@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.databinding.ActivityLoginBinding
 import com.example.propertymanagementapp.helpers.SessionManager
+import com.example.propertymanagementapp.ui.home.HomeScreenActivity
 import com.example.propertymanagementapp.ui.property.AddPropertyActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -73,7 +74,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         response.observe(this, Observer {
 
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, AddPropertyActivity::class.java))
+            startActivity(Intent(this, HomeScreenActivity::class.java))
         })
     }
 

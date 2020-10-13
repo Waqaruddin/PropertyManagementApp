@@ -4,12 +4,12 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.propertymanagementapp.data.models.PropertyList
+import com.example.propertymanagementapp.data.models.MyProperty
 
-class AdapterPropertyList(var mContext: Context, var mList:ArrayList<PropertyList>):RecyclerView.Adapter<AdapterPropertyList.MyViewHolder>(){
+class AdapterPropertyList(var mContext: Context, var mList:ArrayList<MyProperty>):RecyclerView.Adapter<AdapterPropertyList.MyViewHolder>(){
 
     inner class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        fun bind(property:PropertyList){
+        fun bind(property:MyProperty){
 
         }
     }

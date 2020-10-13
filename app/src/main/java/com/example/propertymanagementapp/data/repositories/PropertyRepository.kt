@@ -22,7 +22,7 @@ class PropertyRepository{
             .subscribeWith(object:DisposableSingleObserver<PropertyResponse>(){
                 override fun onSuccess(t: PropertyResponse) {
                     propertyResponse.value = "Added Property"
-                    Log.d("abc", t.data.toString() )
+                    Log.d("abc", t.toString() )
                 }
 
                 override fun onError(e: Throwable) {
