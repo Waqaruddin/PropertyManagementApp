@@ -22,6 +22,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
+import com.example.propertymanagementapp.data.models.ImageResponse
 import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
@@ -181,13 +182,16 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_view.setImageURI(data?.data)
 
-//            //uri path
-//            uriPath = getRealPathFromURI(data?.data)
-//            uploadImage(uriPath!!)
-//            //Log.d("abc", uriPath.toString())
+            //uri path
+            uriPath = getRealPathFromURI(data?.data)
+            uploadImage(uriPath!!)
+            //Log.d("abc", uriPath.toString())
         } else if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             image_view.setImageBitmap(imageBitmap)
+//            var uri = getImageUri(applicationContext, imageBitmap)
+//              uriPath =   getRealPathFromURI(uri)
+//            uploadImage(uriPath!!)
         }
     }
 
@@ -213,17 +217,17 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         var requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
         var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
         MyApi().uploadImage(body)
-            .enqueue(object : Callback<ResponseBody> {
+            .enqueue(object : Callback<ImageResponse> {
                 override fun onResponse(
-                    call: Call<ResponseBody>?,
-                    response: Response<ResponseBody>?
+                    call: Call<ImageResponse>?,
+                    response: Response<ImageResponse>?
                 ) {
                     if (response!!.isSuccessful) {
-                        Log.d("abc", response.body().string())
+                        Log.d("abc", response.body().data.location.toString())
                     }
                 }
 
-                override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                override fun onFailure(call: Call<ImageResponse>?, t: Throwable?) {
 
                 }
 
@@ -243,7 +247,12 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         val bytes = ByteArrayOutputStream()
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         val path: String =
-            MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
+            MediaStore.Images.Media.insertImage(
+                inContext.contentResolver,
+                inImage,
+                "Title",
+                "description"
+            )
         return Uri.parse(path)
     }
 }

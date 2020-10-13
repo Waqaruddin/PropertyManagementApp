@@ -51,7 +51,7 @@ interface MyApi {
     fun uploadImage(
         @Part image: MultipartBody.Part,
 //        @Part ("id") id:String
-    ):Call<ResponseBody>
+    ):Call<ImageResponse>
 
 
     companion object {
