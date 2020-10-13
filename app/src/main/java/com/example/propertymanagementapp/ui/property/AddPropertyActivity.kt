@@ -6,6 +6,8 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -170,7 +172,9 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_view.setImageURI(data?.data)
-            uriPath =  data?.data?.path
+            //uri path
+            //uriPath =  data?.data?.path
+            uriPath = getRealPathFromURI(data?.data)
             uploadImage(uriPath!!)
             //Log.d("abc", uriPath.toString())
         }
@@ -213,5 +217,13 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
                 }
 
             })
+    }
+
+    // get actual path
+    fun getRealPathFromURI(uri: Uri?): String? {
+        val cursor: Cursor? = contentResolver.query(uri!!, null, null, null, null)
+        cursor!!.moveToFirst()
+        val idx: Int = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+        return cursor.getString(idx)
     }
 }
