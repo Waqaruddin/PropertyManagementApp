@@ -58,8 +58,9 @@ class UserRepository {
             .subscribeWith(object:DisposableSingleObserver<LoginResponse>(){
                 override fun onSuccess(t: LoginResponse) {
                     Log.d("abc", t.user.name.toString())
-
-                    loginResponse.value = t.user.name
+                    loginResponse.value = "Login Successful"
+                    sessionManager = SessionManager(mContext)
+                    sessionManager.saveUserLogin(t.token)
                 }
 
                 override fun onError(e: Throwable) {
