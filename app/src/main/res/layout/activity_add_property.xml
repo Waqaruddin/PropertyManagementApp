@@ -1,40 +1,67 @@
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Property"
-        android:textSize="32dp"
-        android:layout_margin="20dp"
-        android:layout_alignParentTop="true"
-        android:textColor="#000"
-        android:id="@+id/text_view_home_screen"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_logout"
-        android:text="logout"
-        android:layout_below="@id/text_view_home_screen"
-        android:layout_margin="20dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add photo"
-        android:id="@+id/button_add_photo"
-        android:layout_margin="20dp"
-        android:layout_below="@id/button_logout"/>
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/image_view"
-        android:layout_below="@id/button_add_photo"
-        android:layout_centerHorizontal="true"/>
-
-</RelativeLayout>
+<layout>
 
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.propertymanagementapp.ui.property.PropertyViewModel" />
+    </data>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Property"
+            android:textSize="32dp"
+            android:layout_margin="20dp"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            android:id="@+id/text_view_home_screen"/>
+
+
+        <EditText
+            android:text="@={viewModel.address}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/edit_text_address"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:onClick="@{viewModel::onAddPropertyClicked}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add property"
+            android:layout_gravity="center"
+            android:id="@+id/button_add_property"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_logout"
+            android:text="logout"
+            android:layout_margin="20dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add photo"
+            android:id="@+id/button_add_photo"
+            android:layout_margin="20dp"
+            />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/image_view"
+            />
+
+    </LinearLayout>
+
+
+
+</layout>

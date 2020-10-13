@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.databinding.ActivityLoginBinding
 import com.example.propertymanagementapp.helpers.SessionManager
-import com.example.propertymanagementapp.ui.home.AddPropertyActivity
+import com.example.propertymanagementapp.ui.property.AddPropertyActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), AuthListener {

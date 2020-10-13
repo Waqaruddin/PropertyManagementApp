@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.ui.home
+package com.example.propertymanagementapp.ui.property
 
 import android.Manifest
 import android.app.Activity
@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.helpers.SessionManager
+import com.example.propertymanagementapp.ui.home.LoginOrRegisterActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_add_property.*
 import kotlinx.android.synthetic.main.bottom_sheet.view.*

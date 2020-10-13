@@ -15,11 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.home.PropertyListActivity"></activity>
+        <activity android:name=".ui.property.PropertyListActivity"></activity>
         <activity android:name=".ui.home.TransactionsScreenActivity" />
         <activity android:name=".ui.home.TenantsScreenActivity" />
         <activity android:name=".ui.home.PropertyScreenActivity" />
-        <activity android:name=".ui.home.AddPropertyActivity"></activity>
+        <activity android:name=".ui.property.AddPropertyActivity"></activity>
         <activity android:name=".ui.home.AddVendorActivity" />
         <activity android:name=".ui.home.ToDoListActivity" />
         <activity android:name=".ui.home.LoginOrRegisterActivity" />

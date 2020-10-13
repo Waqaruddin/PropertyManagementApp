@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.propertymanagementapp.R
+import com.example.propertymanagementapp.ui.property.AddPropertyActivity
 import kotlinx.android.synthetic.main.activity_home_screen.*
 
 class HomeScreenActivity : AppCompatActivity(), View.OnClickListener {
