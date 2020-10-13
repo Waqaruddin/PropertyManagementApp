@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,17 +18,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
+import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
 import com.example.propertymanagementapp.ui.home.LoginOrRegisterActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_add_property.*
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 
 class AddPropertyActivity : AppCompatActivity(), PropertyListener{
     lateinit var sessionManager: SessionManager
     private val CAMERA_REQUEST_CODE = 100
     private val IMAGE_PICK_CODE = 101
+    var uriPath:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // setContentView(R.layout.activity_add_property)
@@ -159,6 +170,9 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_view.setImageURI(data?.data)
+            uriPath =  data?.data?.path
+            uploadImage(uriPath!!)
+            //Log.d("abc", uriPath.toString())
         }
     }
 
@@ -176,5 +190,28 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener{
 
     override fun failure(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    // using retrofit and api
+    fun uploadImage(path:String){
+        var file = File(path)
+        var requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
+        var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
+        MyApi().uploadImage(body)
+            .enqueue(object:Callback<ResponseBody>{
+                override fun onResponse(
+                    call: Call<ResponseBody>?,
+                    response: Response<ResponseBody>?
+                ) {
+                    if(response!!.isSuccessful){
+                        Log.d("abc", response.body().string())
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+
+                }
+
+            })
     }
 }

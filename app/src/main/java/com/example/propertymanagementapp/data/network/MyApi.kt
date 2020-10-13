@@ -4,6 +4,7 @@ import com.example.propertymanagementapp.app.Config
 import com.example.propertymanagementapp.data.models.*
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Single
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -43,6 +44,15 @@ interface MyApi {
 //
 //    @DELETE("")
 //    fun deleteUser(@Path("id") id: Int)
+
+
+    @Multipart
+    @POST("upload/property/picture")
+    fun uploadImage(
+        @Part image: MultipartBody.Part,
+//        @Part ("id") id:String
+    ):Call<ResponseBody>
+
 
     companion object {
         operator fun invoke() : MyApi {
