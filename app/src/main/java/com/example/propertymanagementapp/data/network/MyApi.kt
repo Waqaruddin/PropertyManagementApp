@@ -3,6 +3,7 @@ package com.example.propertymanagementapp.data.network
 import com.example.propertymanagementapp.app.Config
 import com.example.propertymanagementapp.data.models.*
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import io.reactivex.Single
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -13,9 +14,12 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface MyApi {
+//
+//    @POST("auth/login")
+//    fun login(@Body user: User) : Call<LoginResponse>
 
     @POST("auth/login")
-    fun login(@Body user: User) : Call<LoginResponse>
+    fun login(@Body user:User): Single<LoginResponse>
 //
 //    @FormUrlEncoded
 //    @POST("auth/login")

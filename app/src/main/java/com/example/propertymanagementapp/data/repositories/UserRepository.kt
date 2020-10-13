@@ -7,6 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.propertymanagementapp.data.models.*
 import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.helpers.SessionManager
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.observers.DisposableSingleObserver
+import io.reactivex.schedulers.Schedulers
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,31 +20,57 @@ class UserRepository {
 
     lateinit var sessionManager: SessionManager
 
-    fun login( mContext:Context,  email: String, password: String): LiveData<String> {
+//    fun login( mContext:Context,  email: String, password: String): LiveData<String> {
+//        var loginResponse = MutableLiveData<String>()
+//        var user = User(email = email, password = password)
+//
+//
+//        MyApi().login(user)
+//            .enqueue(object : Callback<LoginResponse> {
+//                override fun onResponse(
+//                    call: Call<LoginResponse>,
+//                    response: Response<LoginResponse>
+//                ) {
+//                    if (response.isSuccessful) {
+//                        sessionManager = SessionManager(mContext)
+//                        sessionManager.saveUserLogin(response.body()?.token!!)
+//                        loginResponse.value = "Login Successful"
+//                        Log.d("abc", response.body()?.user?.name.toString())
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                    loginResponse.value = t.message
+//                }
+//
+//            })
+//        return loginResponse
+//    }
+
+
+    //Rx Java
+    fun login(mContext:Context , email:String, password:String):LiveData<String>{
         var loginResponse = MutableLiveData<String>()
-        var user = User(email = email, password = password)
-
-
+        var user = User(email = email , password = password)
         MyApi().login(user)
-            .enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        sessionManager = SessionManager(mContext)
-                        sessionManager.saveUserLogin(response.body()?.token!!)
-                        loginResponse.value = "Login Successful"
-                        Log.d("abc", response.body()?.user?.name.toString())
-                    }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object:DisposableSingleObserver<LoginResponse>(){
+                override fun onSuccess(t: LoginResponse) {
+                    Log.d("abc", t.user.name.toString())
+
+                    loginResponse.value = t.user.name
                 }
 
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    loginResponse.value = t.message
+                override fun onError(e: Throwable) {
+                    Log.d("abc", e.message!!)
+
+
                 }
 
             })
         return loginResponse
+
     }
 
     fun registerTenant(name:String, email:String, password:String, landlordEmail:String, type:String):LiveData<String>{
