@@ -30,7 +30,7 @@ interface MyApi {
     fun addProperty(@Body property:MyProperty):Single<PropertyResponse>
 
     @GET("property")
-    fun getProperty(@Body property:MyApi):Single<PropertyResponse>
+    fun getProperty():Single<PropertyResponse>
 
     @POST("auth/register")
     fun registerLandlord(@Body landlord:Landlord) : Call<RegisterResponse>

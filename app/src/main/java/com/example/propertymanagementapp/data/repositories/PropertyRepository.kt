@@ -37,4 +37,26 @@ class PropertyRepository {
         return propertyResponse
 
     }
+
+    fun getProperty():LiveData<ArrayList<MyProperty>>{
+        var propertyResponse = MutableLiveData<ArrayList<MyProperty>>()
+
+        MyApi().getProperty()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object:DisposableSingleObserver<PropertyResponse>(){
+                override fun onSuccess(t: PropertyResponse) {
+                    propertyResponse.value = t.data
+                    Log.d("abc", t.data[0].address.toString())
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Log.d("abc", e.message!!)
+
+                }
+
+            })
+        return propertyResponse
+    }
 }

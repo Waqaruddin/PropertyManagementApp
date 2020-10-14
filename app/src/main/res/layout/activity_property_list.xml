@@ -1,22 +1,39 @@
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Property List"
-        android:textSize="32dp"
-        android:layout_gravity="center"
-        android:textColor="#000"
-        android:textStyle="bold"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.propertymanagementapp.ui.property.PropertyViewModel" />
+    </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycler_view"/>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Property List"
+            android:textSize="32dp"
+            android:layout_gravity="center"
+            android:textColor="#000"
+            android:textStyle="bold"/>
+
+        <Button
+            android:onClick="@{viewModel::getPropertyClicked}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="get property"
+            android:id="@+id/button_get_property"
+            android:layout_gravity="center"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_view"/>
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>

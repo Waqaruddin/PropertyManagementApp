@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.ui.property.AddPropertyActivity
+import com.example.propertymanagementapp.ui.property.PropertyListActivity
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.app_bar.*
 
@@ -32,7 +33,7 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when(view){
             image_view_prop -> {
-                startActivity(Intent(this, AddPropertyActivity::class.java))
+                startActivity(Intent(this, PropertyListActivity::class.java))
             }
 
             image_view_todo_list -> {

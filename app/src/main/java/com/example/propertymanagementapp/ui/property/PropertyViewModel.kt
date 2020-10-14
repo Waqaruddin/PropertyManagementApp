@@ -8,11 +8,17 @@ class PropertyViewModel: ViewModel() {
 
     var address:String? = null
     var propertyListener:PropertyListener? = null
+    var getPropertyListener:GetPropertyListener? = null
 
     fun onAddPropertyClicked(view: View){
 
         var propertyResponse = PropertyRepository().addProperty(address!!)
         propertyListener?.onSuccess(propertyResponse)
 
+    }
+
+    fun getPropertyClicked(view:View){
+        var propertyResponse = PropertyRepository().getProperty()
+        getPropertyListener?.onSuccess(propertyResponse)
     }
 }
