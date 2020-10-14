@@ -4,6 +4,8 @@
     android:background="#D3D3D3"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <include layout="@layout/app_bar"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_email"
         android:layout_width="match_parent"

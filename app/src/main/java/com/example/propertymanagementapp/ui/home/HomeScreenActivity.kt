@@ -7,6 +7,7 @@ import android.view.View
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.ui.property.AddPropertyActivity
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.app_bar.*
 
 class HomeScreenActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,14 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener {
         init()
     }
 
+    private fun setupToolbar(){
+        var toolbar = tool_bar
+        toolbar.title = "Home"
+    }
+
+
     private fun init() {
+        setupToolbar()
         image_view_prop.setOnClickListener(this)
         image_view_todo_list.setOnClickListener(this)
     }

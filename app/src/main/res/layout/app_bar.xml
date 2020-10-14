@@ -1,0 +1,10 @@
+<androidx.appcompat.widget.Toolbar
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tool_bar"
+    android:background="@color/colorAccent"
+    app:titleTextColor="#fff"
+    android:theme="@style/Platform.MaterialComponents"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

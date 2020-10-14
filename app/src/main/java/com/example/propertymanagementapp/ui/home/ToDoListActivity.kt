@@ -3,6 +3,7 @@ package com.example.propertymanagementapp.ui.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.propertymanagementapp.R
@@ -12,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_to_do_list.*
+import kotlinx.android.synthetic.main.app_bar.*
 
 class ToDoListActivity : AppCompatActivity() {
 
@@ -31,7 +33,16 @@ class ToDoListActivity : AppCompatActivity() {
 
     }
 
+    private fun setupToolbar(){
+        var toolbar = tool_bar
+        toolbar.title = "To-do List"
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+
     private fun init() {
+        setupToolbar()
         getData()
         adapterTask = AdapterTodoList(this, mList, keysList)
         recycler_view.layoutManager = LinearLayoutManager(this)
@@ -62,5 +73,13 @@ class ToDoListActivity : AppCompatActivity() {
 
         })
 
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            android.R.id.home -> finish()
+        }
+        return true
     }
 }
