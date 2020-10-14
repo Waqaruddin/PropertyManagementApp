@@ -18,6 +18,7 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun init() {
         image_view_prop.setOnClickListener(this)
+        image_view_todo_list.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -25,6 +26,11 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener {
             image_view_prop -> {
                 startActivity(Intent(this, AddPropertyActivity::class.java))
             }
+
+            image_view_todo_list -> {
+                startActivity(Intent(this, ToDoListActivity::class.java))
+            }
+
 
         }
     }

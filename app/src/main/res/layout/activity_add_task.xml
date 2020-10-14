@@ -1,0 +1,66 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#D3D3D3"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="25dp"
+        style="@style/TextLabel"
+        app:hintTextAppearance="@style/TextLabel"
+        android:layout_centerInParent="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_text_task"
+            android:layout_centerHorizontal="true"
+            android:hint="Title"
+            android:background="#fff"
+            android:layout_margin="20dp"
+            android:textSize="32dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_layout_password"
+        android:layout_centerInParent="true"
+        app:hintTextAppearance="@style/TextLabel"
+        android:layout_below="@id/input_layout_email">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_text_decsription"
+            android:textSize="20dp"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:layout_margin="20dp"
+            android:background="#fff"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/edit_text_task"
+            android:hint="Enter Description"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_done_24"/>
+
+
+</RelativeLayout>
