@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -29,6 +30,7 @@ import com.example.propertymanagementapp.helpers.SessionManager
 import com.example.propertymanagementapp.ui.home.LoginOrRegisterActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_add_property.*
+import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.bottom_sheet.view.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -59,7 +61,15 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         init()
     }
 
+    private fun setupToolbar(){
+        var toolbar = tool_bar
+        toolbar.title = "Add Property"
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
     private fun init() {
+        setupToolbar()
         val bottomSheetDialog = BottomSheetDialog(this)
         val view = layoutInflater.inflate(R.layout.bottom_sheet, null)
         bottomSheetDialog.setContentView(view)
@@ -254,5 +264,12 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
                 "description"
             )
         return Uri.parse(path)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            android.R.id.home -> finish()
+        }
+        return true
     }
 }

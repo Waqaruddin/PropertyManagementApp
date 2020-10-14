@@ -1,7 +1,9 @@
 package com.example.propertymanagementapp.ui.property
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
@@ -14,6 +16,7 @@ import com.example.propertymanagementapp.data.models.MyProperty
 import com.example.propertymanagementapp.databinding.ActivityPropertyListBinding
 import io.reactivex.internal.operators.maybe.MaybeFlatMapBiSelector
 import kotlinx.android.synthetic.main.activity_property_list.*
+import kotlinx.android.synthetic.main.app_bar.*
 
 class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
     private var adapterProperty:AdapterPropertyList? = null
@@ -27,8 +30,17 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
         init()
     }
 
+
+    private fun setupToolbar(){
+        var toolbar = tool_bar
+        toolbar.title = "Property List"
+        setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
     private fun init() {
 
+        setupToolbar()
         val viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
         mBinding.viewModel = viewModel
         viewModel.getPropertyListener = this
@@ -36,6 +48,10 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
         adapterProperty = AdapterPropertyList(this, mList)
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = adapterProperty
+
+        button_add_property.setOnClickListener {
+            startActivity(Intent(this, AddPropertyActivity::class.java))
+        }
     }
 
     override fun onStarted() {
@@ -51,5 +67,12 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
 
     override fun failure(message: String) {
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            android.R.id.home -> finish()
+        }
+        return true
     }
 }

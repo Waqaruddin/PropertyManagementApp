@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.ui.property.AddPropertyActivity
 import com.example.propertymanagementapp.ui.property.PropertyListActivity
+import com.example.propertymanagementapp.ui.todolist.ToDoListActivity
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.app_bar.*
 

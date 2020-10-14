@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.ui.home
+package com.example.propertymanagementapp.ui.todolist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +14,6 @@ class AddTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
-
         init()
     }
 
@@ -25,12 +24,6 @@ class AddTaskActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
-            android.R.id.home -> finish()
-        }
-        return true
-    }
 
     private fun init() {
 
@@ -54,5 +47,12 @@ class AddTaskActivity : AppCompatActivity() {
 
 
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return true
     }
 }

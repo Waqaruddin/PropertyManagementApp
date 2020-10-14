@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="25dp"
+        android:layout_marginTop="50dp"
         style="@style/TextLabel"
         app:hintTextAppearance="@style/TextLabel"
         android:layout_centerInParent="true">
@@ -32,7 +32,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/input_layout_password"
+        android:id="@+id/input_layout_description"
         android:layout_centerInParent="true"
         app:hintTextAppearance="@style/TextLabel"
         android:layout_below="@id/input_layout_email">

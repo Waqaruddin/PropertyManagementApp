@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.ui.home
+package com.example.propertymanagementapp.ui.todolist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
