@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:hint="Enter Address"
             android:id="@+id/edit_text_address"
             android:layout_marginBottom="10dp"/>
 
@@ -43,15 +44,10 @@
             android:id="@+id/button_add_property"/>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_logout"
-            android:text="logout"
-            android:layout_margin="20dp"/>
-        <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add photo"
+            android:layout_gravity="center"
             android:id="@+id/button_add_photo"
             android:layout_margin="20dp"
             />

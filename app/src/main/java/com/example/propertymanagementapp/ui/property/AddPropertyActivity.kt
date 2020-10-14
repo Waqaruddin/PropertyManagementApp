@@ -83,32 +83,9 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         view.button_open_gallery.setOnClickListener {
             checkForGalleryPermission()
         }
-        button_logout.setOnClickListener {
-            dialogLogout()
-        }
     }
 
-    private fun dialogLogout() {
-        var builder = AlertDialog.Builder(this)
-        builder.setTitle("Logout")
-        builder.setMessage("Are you sure you want to logout?")
-        builder.setNegativeButton("No", object : DialogInterface.OnClickListener {
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                dialog?.dismiss()
-            }
 
-        })
-        builder.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                sessionManager.logout()
-                startActivity(Intent(applicationContext, LoginOrRegisterActivity::class.java))
-
-            }
-
-        })
-        var mAlertDialog = builder.create()
-        mAlertDialog.show()
-    }
 
 
     private fun checkForGalleryPermission() {
