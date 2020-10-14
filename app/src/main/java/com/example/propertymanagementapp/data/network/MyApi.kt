@@ -32,6 +32,9 @@ interface MyApi {
     @GET("property")
     fun getProperty():Single<PropertyResponse>
 
+    @GET("property/user/{Id}")
+    fun getPropertyById(userId:String):Single<PropertyResponse>
+
     @POST("auth/register")
     fun registerLandlord(@Body landlord:Landlord) : Call<RegisterResponse>
 

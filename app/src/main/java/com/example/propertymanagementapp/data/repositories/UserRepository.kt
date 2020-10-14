@@ -61,6 +61,7 @@ class UserRepository {
                     loginResponse.value = "Login Successful"
                     sessionManager = SessionManager(mContext)
                     sessionManager.saveUserLogin(t.token)
+                    sessionManager.saveUserId(user)
                 }
 
                 override fun onError(e: Throwable) {
