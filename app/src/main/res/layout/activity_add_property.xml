@@ -15,24 +15,42 @@
 
         <include layout="@layout/app_bar"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Property"
-            android:textSize="32dp"
-            android:layout_margin="20dp"
-            android:textColor="#000"
-            android:layout_gravity="center"
-            android:id="@+id/text_view_home_screen"/>
-
 
         <EditText
             android:text="@={viewModel.address}"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:hint="Enter Address"
+            android:hint="Address"
             android:id="@+id/edit_text_address"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:text="@={viewModel.city}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:hint="City"
+            android:id="@+id/edit_text_city"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:text="@={viewModel.address}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:hint="State"
+            android:id="@+id/edit_text_state"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:text="@={viewModel.address}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:hint="Zip Code"
+            android:inputType="number"
+            android:id="@+id/edit_text_zipcode"
             android:layout_marginBottom="10dp"/>
 
         <Button

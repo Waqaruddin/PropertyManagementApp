@@ -175,12 +175,14 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
              uploadImage(uriPath!!)
 
             //Log.d("abc", uriPath.toString())
-        } else if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras!!.get("data") as Bitmap
-            image_view.setImageBitmap(imageBitmap)
-//            var uri = getImageUri(this, imageBitmap)
-//            var  uriPath =   getRealPathFromURI(uri)
-//            PropertyRepository().uploadImage(uriPath!!)
+        }
+        if (  resultCode == Activity.RESULT_OK &&  requestCode == CAMERA_REQUEST_CODE) {
+
+            var imageBitmap = data?.extras!!.get("data") as Bitmap
+           image_view.setImageBitmap(imageBitmap)
+           // var uri = getImageUri(this, imageBitmap)
+            var  uriPath =   getRealPathFromURI(data?.data)
+            uploadImage(uriPath!!)
         }
     }
 

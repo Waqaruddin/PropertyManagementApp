@@ -94,26 +94,4 @@ fun getProperty(): LiveData<ArrayList<MyProperty>> {
     return propertyResponse
 }
 
-
-//    fun uploadImage(path: String) {
-//        var file = File(path)
-//        var requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
-//        var body = MultipartBody.Part.createFormData("image", file.name, requestFile)
-//        MyApi().uploadImage(body)
-//            .enqueue(object : Callback<ImageResponse> {
-//                override fun onResponse(
-//                    call: Call<ImageResponse>?,
-//                    response: Response<ImageResponse>?
-//                ) {
-//                    if (response!!.isSuccessful) {
-//                        Log.d("abc", response.body().data.location.toString())
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ImageResponse>?, t: Throwable?) {
-//
-//                }
-//
-//            })
-//    }
 }

@@ -8,6 +8,9 @@ class PropertyViewModel: ViewModel() {
 
     var image:String? = null
     var address:String? = null
+    var city:String? = null
+    var state:String? = null
+    var zipcode:Int? = null
     var propertyListener:PropertyListener? = null
     var getPropertyListener:GetPropertyListener? = null
 
