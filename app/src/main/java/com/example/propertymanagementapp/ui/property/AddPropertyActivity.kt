@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.data.models.ImageResponse
 import com.example.propertymanagementapp.data.network.MyApi
+import com.example.propertymanagementapp.data.repositories.PropertyRepository
 import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
 import com.example.propertymanagementapp.ui.home.LoginOrRegisterActivity
@@ -47,14 +48,15 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
     private val CAMERA_REQUEST_CODE = 100
     private val IMAGE_PICK_CODE = 101
     var uriPath: String? = null
+    lateinit var binding:ActivityAddPropertyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_add_property)
         sessionManager = SessionManager(this)
 
-        val binding: ActivityAddPropertyBinding =
+        binding =
             DataBindingUtil.setContentView(this, R.layout.activity_add_property)
-        val viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
+        var viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
         binding.viewModel = viewModel
         viewModel.propertyListener = this
 
@@ -168,17 +170,17 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             image_view.setImageURI(data?.data)
-
             //uri path
             uriPath = getRealPathFromURI(data?.data)
-            uploadImage(uriPath!!)
+             uploadImage(uriPath!!)
+
             //Log.d("abc", uriPath.toString())
         } else if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
+            val imageBitmap = data?.extras!!.get("data") as Bitmap
             image_view.setImageBitmap(imageBitmap)
-//            var uri = getImageUri(applicationContext, imageBitmap)
-//              uriPath =   getRealPathFromURI(uri)
-//            uploadImage(uriPath!!)
+//            var uri = getImageUri(this, imageBitmap)
+//            var  uriPath =   getRealPathFromURI(uri)
+//            PropertyRepository().uploadImage(uriPath!!)
         }
     }
 
@@ -211,6 +213,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
                 ) {
                     if (response!!.isSuccessful) {
                         Log.d("abc", response.body().data.location.toString())
+                        binding.viewModel!!.addImage(response.body()!!.data.location!!)
                     }
                 }
 
@@ -238,7 +241,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
                 inContext.contentResolver,
                 inImage,
                 "Title",
-                "description"
+                null
             )
         return Uri.parse(path)
     }

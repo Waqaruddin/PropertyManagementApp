@@ -6,19 +6,30 @@ import com.example.propertymanagementapp.data.repositories.PropertyRepository
 
 class PropertyViewModel: ViewModel() {
 
+    var image:String? = null
     var address:String? = null
     var propertyListener:PropertyListener? = null
     var getPropertyListener:GetPropertyListener? = null
 
     fun onAddPropertyClicked(view: View){
 
-        var propertyResponse = PropertyRepository().addProperty(address!!)
+        var propertyResponse = PropertyRepository().addProperty(address!!, image!!)
         propertyListener?.onSuccess(propertyResponse)
 
     }
+
+  fun addImage(imageURL:String){
+
+      image = imageURL
+  }
 
     fun getPropertyClicked(view:View){
         var propertyResponse = PropertyRepository().getProperty()
         getPropertyListener?.onSuccess(propertyResponse)
     }
+//
+//    fun getPropertyClicked(view:View){
+//        var propertyResponse = PropertyRepository().getPropertyById(view.context)
+//        getPropertyListener?.onSuccess(propertyResponse)
+//    }
 }
