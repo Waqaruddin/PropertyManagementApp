@@ -10,13 +10,12 @@ class PropertyViewModel: ViewModel() {
     var address:String? = null
     var city:String? = null
     var state:String? = null
-    var zipcode:Int? = null
     var propertyListener:PropertyListener? = null
     var getPropertyListener:GetPropertyListener? = null
 
     fun onAddPropertyClicked(view: View){
 
-        var propertyResponse = PropertyRepository().addProperty(address!!, image!!)
+        var propertyResponse = PropertyRepository().addProperty(address!!, city!! , state!! , image!!)
         propertyListener?.onSuccess(propertyResponse)
 
     }

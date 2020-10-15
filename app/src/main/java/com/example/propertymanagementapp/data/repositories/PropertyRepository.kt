@@ -24,10 +24,10 @@ import java.io.File
 class PropertyRepository {
     lateinit var sessionManager: SessionManager
 
-    fun addProperty(address: String, imageURL:String): LiveData<String> {
+    fun addProperty(address: String, city:String, state:String, imageURL:String): LiveData<String> {
 
         var propertyResponse = MutableLiveData<String>()
-        var property = MyProperty(address = address, image = imageURL)
+        var property = MyProperty(address = address, city = city, state = state , image = imageURL)
 
         MyApi().addProperty(property)
             .subscribeOn(Schedulers.io())

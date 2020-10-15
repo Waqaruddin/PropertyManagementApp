@@ -38,6 +38,7 @@ class AdapterPropertyList(var mContext: Context, var mList: ArrayList<MyProperty
             itemView.text_view_address.text = property.address
             itemView.text_view_city.text = property.city
             itemView.text_view_state.text = property.state
+            itemView.text_view_image.text = property.image
 
         }
     }

@@ -19,12 +19,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="get property"
+            android:background="@drawable/button_border"
+            android:padding="10dp"
+            android:layout_margin="10dp"
             android:id="@+id/button_get_property"
             android:layout_gravity="center"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add property"
+            android:background="@drawable/button_border"
+            android:padding="10dp"
+
             android:layout_gravity="center"
             android:id="@+id/button_add_property"/>
 
