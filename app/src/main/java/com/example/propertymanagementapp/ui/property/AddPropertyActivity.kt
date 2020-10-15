@@ -176,12 +176,10 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         }
         if ( resultCode == Activity.RESULT_OK &&  requestCode == CAMERA_REQUEST_CODE) {
 
-            fixMediaDir()
             var bmp = data?.extras!!.get("data") as Bitmap
            image_view.setImageBitmap(bmp)
-           // fixMediaDir()
             var uri = getImageUri(this, bmp)
-            var  uriPath =   getRealPathFromURI(uri)
+             uriPath =   getRealPathFromURI(uri)
             uploadImage(uriPath!!)
         }
     }
@@ -214,7 +212,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
                     response: Response<ImageResponse>?
                 ) {
                     if (response!!.isSuccessful) {
-                        Log.d("abc", response.body().data.location.toString())
+                        Log.d("aaa", response.body().data.location.toString())
                         binding.viewModel!!.addImage(response.body()!!.data.location!!)
                     }
                 }
@@ -236,7 +234,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
 
     // get URI from bitmap
     fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
-        fixMediaDir()
+       // fixMediaDir()
         val bytes = ByteArrayOutputStream()
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         val path: String =
@@ -256,13 +254,13 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         return true
     }
 
-    fun fixMediaDir() {
-        val sdcard: File = Environment.getExternalStorageDirectory()
-        if (sdcard != null) {
-            val mediaDir = File(sdcard, "DCIM/Camera")
-            if (!mediaDir.exists()) {
-                mediaDir.mkdirs()
-            }
-        }
-    }
+//    fun fixMediaDir() {
+//        val sdcard: File = Environment.getExternalStorageDirectory()
+//        if (sdcard != null) {
+//            val mediaDir = File(sdcard, "DCIM/Camera")
+//            if (!mediaDir.exists()) {
+//                mediaDir.mkdirs()
+//            }
+//        }
+//    }
 }

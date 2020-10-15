@@ -6,7 +6,7 @@ import com.example.propertymanagementapp.data.repositories.PropertyRepository
 
 class PropertyViewModel : ViewModel() {
 
-    var image: String? = null
+    var image: String? = ""
     var address: String? = null
     var city: String? = null
     var state: String? = null
@@ -15,7 +15,7 @@ class PropertyViewModel : ViewModel() {
 
     fun onAddPropertyClicked(view: View) {
 
-        if (address.isNullOrEmpty() || city.isNullOrEmpty() || state.isNullOrEmpty() || image.isNullOrEmpty()) {
+        if (address.isNullOrEmpty() || city.isNullOrEmpty() || state.isNullOrEmpty()) {
             propertyListener?.failure("All fields are required")
             return
         }
