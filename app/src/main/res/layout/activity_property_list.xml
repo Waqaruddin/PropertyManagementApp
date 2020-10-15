@@ -1,43 +1,65 @@
 <layout>
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.propertymanagementapp.ui.property.PropertyViewModel" />
     </data>
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:weightSum="2">
 
-        <include layout="@layout/app_bar"/>
+        <include layout="@layout/app_bar" />
 
-
-        <Button
-            android:onClick="@{viewModel::getPropertyClicked}"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="get property"
-            android:background="@drawable/button_border"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:id="@+id/button_get_property"
-            android:layout_gravity="center"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add property"
-            android:background="@drawable/button_border"
-            android:padding="10dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.8"
+            android:orientation="vertical">
 
-            android:layout_gravity="center"
-            android:id="@+id/button_add_property"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recycler_view"/>
+            android:layout_weight="0.2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_get_property"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                android:background="@drawable/button_border"
+                android:onClick="@{viewModel::getPropertyClicked}"
+                android:padding="10dp"
+                android:text="get property"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/button_add_property"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="30dp"
+                android:background="@drawable/button_border"
+                android:padding="10dp"
+                android:text="Add property"
+                android:textColor="#fff" />
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
