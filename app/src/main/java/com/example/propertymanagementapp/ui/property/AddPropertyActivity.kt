@@ -2,20 +2,19 @@ package com.example.propertymanagementapp.ui.property
 
 import android.Manifest
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -25,10 +24,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.data.models.ImageResponse
 import com.example.propertymanagementapp.data.network.MyApi
-import com.example.propertymanagementapp.data.repositories.PropertyRepository
 import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
-import com.example.propertymanagementapp.ui.home.LoginOrRegisterActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_add_property.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -36,7 +33,6 @@ import kotlinx.android.synthetic.main.bottom_sheet.view.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -151,6 +147,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
                 } else {
                     Toast.makeText(applicationContext, "permission granted", Toast.LENGTH_SHORT)
                         .show()
+                    openCamera()
 
                 }
             }
@@ -161,6 +158,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
                 } else {
                     Toast.makeText(applicationContext, "permission granted", Toast.LENGTH_SHORT)
                         .show()
+                    openGallery()
                 }
             }
         }
@@ -176,12 +174,14 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
 
             //Log.d("abc", uriPath.toString())
         }
-        if (  resultCode == Activity.RESULT_OK &&  requestCode == CAMERA_REQUEST_CODE) {
+        if ( resultCode == Activity.RESULT_OK &&  requestCode == CAMERA_REQUEST_CODE) {
 
-            var imageBitmap = data?.extras!!.get("data") as Bitmap
-           image_view.setImageBitmap(imageBitmap)
-           // var uri = getImageUri(this, imageBitmap)
-            var  uriPath =   getRealPathFromURI(data?.data)
+            fixMediaDir()
+            var bmp = data?.extras!!.get("data") as Bitmap
+           image_view.setImageBitmap(bmp)
+           // fixMediaDir()
+            var uri = getImageUri(this, bmp)
+            var  uriPath =   getRealPathFromURI(uri)
             uploadImage(uriPath!!)
         }
     }
@@ -236,6 +236,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
 
     // get URI from bitmap
     fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
+        fixMediaDir()
         val bytes = ByteArrayOutputStream()
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         val path: String =
@@ -253,5 +254,15 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
             android.R.id.home -> finish()
         }
         return true
+    }
+
+    fun fixMediaDir() {
+        val sdcard: File = Environment.getExternalStorageDirectory()
+        if (sdcard != null) {
+            val mediaDir = File(sdcard, "DCIM/Camera")
+            if (!mediaDir.exists()) {
+                mediaDir.mkdirs()
+            }
+        }
     }
 }

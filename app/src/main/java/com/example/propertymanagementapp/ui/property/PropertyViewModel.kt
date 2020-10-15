@@ -4,28 +4,32 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.propertymanagementapp.data.repositories.PropertyRepository
 
-class PropertyViewModel: ViewModel() {
+class PropertyViewModel : ViewModel() {
 
-    var image:String? = null
-    var address:String? = null
-    var city:String? = null
-    var state:String? = null
-    var propertyListener:PropertyListener? = null
-    var getPropertyListener:GetPropertyListener? = null
+    var image: String? = null
+    var address: String? = null
+    var city: String? = null
+    var state: String? = null
+    var propertyListener: PropertyListener? = null
+    var getPropertyListener: GetPropertyListener? = null
 
-    fun onAddPropertyClicked(view: View){
+    fun onAddPropertyClicked(view: View) {
 
-        var propertyResponse = PropertyRepository().addProperty(address!!, city!! , state!! , image!!)
+        if (address.isNullOrEmpty() || city.isNullOrEmpty() || state.isNullOrEmpty() || image.isNullOrEmpty()) {
+            propertyListener?.failure("All fields are required")
+            return
+        }
+
+        var propertyResponse = PropertyRepository().addProperty(address!!, city!!, state!!, image!!)
         propertyListener?.onSuccess(propertyResponse)
-
     }
 
-  fun addImage(imageURL:String){
+    fun addImage(imageURL: String) {
 
-      image = imageURL
-  }
+        image = imageURL
+    }
 
-    fun getPropertyClicked(view:View){
+    fun getPropertyClicked(view: View) {
         var propertyResponse = PropertyRepository().getProperty()
         getPropertyListener?.onSuccess(propertyResponse)
     }
