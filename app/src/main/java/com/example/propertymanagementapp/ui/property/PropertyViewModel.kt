@@ -29,13 +29,13 @@ class PropertyViewModel : ViewModel() {
         image = imageURL
     }
 
-    fun getPropertyClicked(view: View) {
-        var propertyResponse = PropertyRepository().getProperty()
-        getPropertyListener?.onSuccess(propertyResponse)
-    }
-//
-//    fun getPropertyClicked(view:View){
-//        var propertyResponse = PropertyRepository().getPropertyById(view.context)
+//    fun getPropertyClicked(view: View) {
+//        var propertyResponse = PropertyRepository().getProperty()
 //        getPropertyListener?.onSuccess(propertyResponse)
 //    }
+
+    fun getPropertyClicked(view:View){
+        var propertyResponse = PropertyRepository().getPropertyById(view.context)
+        getPropertyListener?.onSuccess(propertyResponse)
+    }
 }
