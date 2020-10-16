@@ -7,20 +7,30 @@
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="D3D3D3"
+        android:background="#6495ED"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_alignParentTop="true"
+            android:src="@drawable/ic_baseline_home_work_24"
             android:text="Sign in"
+            android:textColor="#000"
             android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_view"
+            android:layout_centerHorizontal="true"
+            android:text="Property Management"
+            android:textColor="#000"
             android:textSize="32dp"
-            android:layout_marginTop="40dp"
-            android:gravity="center_horizontal"
-            android:textAlignment="center"/>
+            android:textStyle="italic" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_email"
@@ -67,7 +77,7 @@
             android:id="@+id/button_login"
             android:layout_centerInParent="true"
             android:layout_below="@id/input_layout_password"
-            android:background="@drawable/button_border"
+            android:background="@drawable/button_border_green"
             android:layout_margin="20dp"
             android:textAllCaps="false"
             android:textSize="20dp"
