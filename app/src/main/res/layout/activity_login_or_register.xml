@@ -26,7 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
-        android:background="@drawable/button_border"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:background="@drawable/button_border_green"
         android:text="Sign up" />
 
 
@@ -39,6 +43,7 @@
         android:text="OR"
         android:textColor="#000"
         android:textSize="20dp"
+        android:textAllCaps="false"
         android:textStyle="italic" />
 
 
@@ -49,7 +54,11 @@
         android:layout_below="@id/text_view_or"
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
-        android:background="@drawable/button_border"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:background="@drawable/button_border_green"
         android:text="Sign in" />
 
 

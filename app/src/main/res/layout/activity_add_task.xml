@@ -67,16 +67,44 @@
         android:background="#fff"
         android:hint="Estimated Cost"
         android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="#fff"
+        android:hint="Actual Cost"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:background="#fff"
+        android:hint="Status"
+        android:padding="10dp"
         android:textSize="20dp" />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_add_task"
-        android:layout_width="wrap_content"
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/button_add_task"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|center"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:src="@drawable/ic_baseline_done_24" />-->
+
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:id="@+id/button_add_task"
         android:layout_margin="20dp"
-        android:src="@drawable/ic_baseline_done_24" />
+        android:textColor="#fff"
+        android:background="@drawable/button_border"
+        android:text="Save Changes"/>
 
 
 </LinearLayout>

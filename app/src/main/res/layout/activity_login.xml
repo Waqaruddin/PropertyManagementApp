@@ -7,6 +7,7 @@
 
     <RelativeLayout android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="D3D3D3"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -68,12 +69,15 @@
             android:layout_below="@id/input_layout_password"
             android:background="@drawable/button_border"
             android:layout_margin="20dp"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+            android:textColor="#fff"
             android:text="Sign in"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New user?"
+            android:text="Don't have an account?"
             android:id="@+id/text_view_new_user"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
