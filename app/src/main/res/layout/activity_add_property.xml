@@ -67,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="30dp"
+            android:textColor="#fff"
             android:background="@drawable/button_border"
             android:layout_marginHorizontal="20dp"
             android:text="Add photo" />
@@ -77,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="30dp"
+            android:textColor="#fff"
             android:background="@drawable/button_border"
             android:onClick="@{viewModel::onAddPropertyClicked}"
             android:text="Submit" />
@@ -85,7 +87,9 @@
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="200dp"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"/>
 
     </LinearLayout>
 

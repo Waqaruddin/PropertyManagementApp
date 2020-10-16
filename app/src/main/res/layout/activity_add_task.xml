@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="#fff"
-        android:hint="Priority"
+        android:hint="Property"
         android:textSize="20dp" />
 
     <EditText

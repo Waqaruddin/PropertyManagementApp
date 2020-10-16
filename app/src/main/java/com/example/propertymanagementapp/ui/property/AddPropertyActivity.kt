@@ -77,9 +77,12 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         }
         view.button_open_camera.setOnClickListener {
             checkForCameraPermission()
+            bottomSheetDialog.dismiss()
         }
         view.button_open_gallery.setOnClickListener {
             checkForGalleryPermission()
+            bottomSheetDialog.dismiss()
+
         }
     }
 
