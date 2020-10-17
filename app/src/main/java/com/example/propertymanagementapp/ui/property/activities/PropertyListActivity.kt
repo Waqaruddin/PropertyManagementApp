@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
@@ -65,6 +67,7 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
         response.observe(this, Observer {
             adapterProperty?.setData(it)
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+            progress_bar.visibility = INVISIBLE
         })
     }
 

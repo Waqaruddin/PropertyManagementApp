@@ -61,6 +61,7 @@ class PropertyRepository {
                 override fun onSuccess(t: PropertyResponse) {
                     propertyResponse.value = t.data
                     Log.d("abc", t.data[0].address.toString())
+
                 }
 
                 override fun onError(e: Throwable) {
