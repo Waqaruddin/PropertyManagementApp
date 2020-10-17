@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.fragments
+package com.example.propertymanagementapp.ui.auth.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,24 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.ui.auth.LoginActivity
-import com.example.propertymanagementapp.data.network.MyApi
-import com.example.propertymanagementapp.data.models.Landlord
-import com.example.propertymanagementapp.data.models.RegisterResponse
 import com.example.propertymanagementapp.databinding.FragmentLandlordBinding
 import com.example.propertymanagementapp.helpers.toastShort
 import com.example.propertymanagementapp.ui.auth.AuthListener
 import com.example.propertymanagementapp.ui.auth.AuthViewModel
-import kotlinx.android.synthetic.main.fragment_landlord.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.propertymanagementapp.ui.auth.activities.LoginActivity
 
 
 class LandlordFragment : Fragment(), AuthListener {

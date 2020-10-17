@@ -7,10 +7,9 @@
     android:background="#ADD8E6"
     app:cardElevation="10dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="#ADD8E6"
         android:padding="10dp">
 
@@ -19,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
+            android:layout_centerHorizontal="true"
             android:textSize="18dp" />
 
         <TextView
@@ -26,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/text_view_address"
             android:textSize="18dp" />
 
 
@@ -33,18 +35,27 @@
             android:id="@+id/text_view_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/text_view_city"
             android:textColor="#000"
             android:textSize="18dp" />
 
 
-        <TextView
-            android:id="@+id/text_view_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="#000"/>
+<!--        <TextView-->
+<!--            android:id="@+id/text_view_image"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="18dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:textColor="#000"/>-->
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/image_view"
+            android:layout_centerVertical="true"/>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

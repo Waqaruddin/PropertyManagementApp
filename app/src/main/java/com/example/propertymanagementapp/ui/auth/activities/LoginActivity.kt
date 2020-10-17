@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.ui.auth
+package com.example.propertymanagementapp.ui.auth.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +11,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.databinding.ActivityLoginBinding
 import com.example.propertymanagementapp.helpers.SessionManager
+import com.example.propertymanagementapp.ui.auth.AuthListener
+import com.example.propertymanagementapp.ui.auth.AuthViewModel
 import com.example.propertymanagementapp.ui.home.HomeScreenActivity
-import com.example.propertymanagementapp.ui.property.AddPropertyActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), AuthListener {

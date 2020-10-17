@@ -13,7 +13,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.helpers.SessionManager
-import com.example.propertymanagementapp.ui.property.PropertyListActivity
+import com.example.propertymanagementapp.ui.property.activities.PropertyListActivity
 import com.example.propertymanagementapp.ui.todolist.ToDoListActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_screen.*

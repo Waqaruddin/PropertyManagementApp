@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.adapters
+package com.example.propertymanagementapp.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.data.models.MyProperty
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_adapter_property_list.view.*
 
 class AdapterPropertyList(var mContext: Context, var mList: ArrayList<MyProperty>) :
@@ -38,7 +39,15 @@ class AdapterPropertyList(var mContext: Context, var mList: ArrayList<MyProperty
             itemView.text_view_address.text = property.address
             itemView.text_view_city.text = property.city
             itemView.text_view_state.text = property.state
-            itemView.text_view_image.text = property.image
+
+            if (property.image!!.isNotEmpty()) {
+                Picasso.get()
+                    .load(property.image)
+                    .resize(120, 120)
+                    .centerCrop().placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_background)
+                    .into(itemView.image_view)
+            }
 
         }
     }

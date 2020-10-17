@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.ui.property
+package com.example.propertymanagementapp.ui.property.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.adapters.AdapterPropertyList
+import com.example.propertymanagementapp.ui.adapters.AdapterPropertyList
 import com.example.propertymanagementapp.data.models.MyProperty
 import com.example.propertymanagementapp.databinding.ActivityPropertyListBinding
-import io.reactivex.internal.operators.maybe.MaybeFlatMapBiSelector
+import com.example.propertymanagementapp.ui.property.GetPropertyListener
+import com.example.propertymanagementapp.ui.property.PropertyViewModel
 import kotlinx.android.synthetic.main.activity_property_list.*
 import kotlinx.android.synthetic.main.app_bar.*
 

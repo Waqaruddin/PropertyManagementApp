@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.adapters
+package com.example.propertymanagementapp.ui.adapters
 
 import android.app.AlertDialog
 import android.content.Context

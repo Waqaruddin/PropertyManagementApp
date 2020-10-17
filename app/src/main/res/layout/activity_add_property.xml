@@ -61,6 +61,15 @@
 <!--            android:text="@={viewModel.zipcode}"-->
 <!--            android:textSize="20dp" />-->
 
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"/>
+
         <Button
             android:id="@+id/button_add_photo"
             android:layout_width="match_parent"
@@ -84,12 +93,6 @@
             android:text="Submit" />
 
 
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"/>
 
     </LinearLayout>
 

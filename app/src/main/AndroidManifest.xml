@@ -16,16 +16,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.todolist.AddTaskActivity"></activity>
-        <activity android:name=".ui.property.PropertyListActivity" />
-        <activity android:name=".ui.home.TransactionsScreenActivity" />
-        <activity android:name=".ui.home.TenantsScreenActivity" />
+        <activity android:name=".ui.property.activities.PropertyListActivity" />
+        <activity android:name="com.example.propertymanagementapp.ui.others.TransactionsScreenActivity" />
+        <activity android:name="com.example.propertymanagementapp.ui.others.TenantsScreenActivity" />
         <activity android:name=".ui.home.PropertyScreenActivity" />
-        <activity android:name=".ui.property.AddPropertyActivity" />
-        <activity android:name=".ui.home.AddVendorActivity" />
+        <activity android:name=".ui.property.activities.AddPropertyActivity" />
+        <activity android:name="com.example.propertymanagementapp.ui.others.AddVendorActivity" />
         <activity android:name=".ui.todolist.ToDoListActivity" />
         <activity android:name=".ui.home.LoginOrRegisterActivity" />
-        <activity android:name=".ui.auth.RegisterActivity" />
-        <activity android:name=".ui.auth.LoginActivity" />
+        <activity android:name=".ui.auth.activities.RegisterActivity" />
+        <activity android:name=".ui.auth.activities.LoginActivity" />
         <activity android:name=".ui.home.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

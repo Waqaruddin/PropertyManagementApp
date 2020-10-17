@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.adapters.AdapterTodoList
+import com.example.propertymanagementapp.ui.adapters.AdapterTodoList
 import com.example.propertymanagementapp.data.models.Task
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth

@@ -1,4 +1,4 @@
-package com.example.propertymanagementapp.ui.property
+package com.example.propertymanagementapp.ui.property.activities
 
 import android.Manifest
 import android.app.Activity
@@ -9,7 +9,6 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
@@ -26,6 +25,8 @@ import com.example.propertymanagementapp.data.models.ImageResponse
 import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
+import com.example.propertymanagementapp.ui.property.PropertyListener
+import com.example.propertymanagementapp.ui.property.PropertyViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_add_property.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -44,7 +45,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
     private val CAMERA_REQUEST_CODE = 100
     private val IMAGE_PICK_CODE = 101
     var uriPath: String? = null
-    lateinit var binding:ActivityAddPropertyBinding
+    lateinit var binding: ActivityAddPropertyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_add_property)
@@ -59,7 +60,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         init()
     }
 
-    private fun setupToolbar(){
+    private fun setupToolbar() {
         var toolbar = tool_bar
         toolbar.title = "Add Property"
         setSupportActionBar(toolbar)
@@ -85,8 +86,6 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
 
         }
     }
-
-
 
 
     private fun checkForGalleryPermission() {
@@ -173,16 +172,16 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
             image_view.setImageURI(data?.data)
             //uri path
             uriPath = getRealPathFromURI(data?.data)
-             uploadImage(uriPath!!)
+            uploadImage(uriPath!!)
 
             //Log.d("abc", uriPath.toString())
         }
-        if ( resultCode == Activity.RESULT_OK &&  requestCode == CAMERA_REQUEST_CODE) {
+        if (resultCode == Activity.RESULT_OK && requestCode == CAMERA_REQUEST_CODE) {
 
             var bmp = data?.extras!!.get("data") as Bitmap
-           image_view.setImageBitmap(bmp)
+            image_view.setImageBitmap(bmp)
             var uri = getImageUri(this, bmp)
-             uriPath =   getRealPathFromURI(uri)
+            uriPath = getRealPathFromURI(uri)
             uploadImage(uriPath!!)
         }
     }
@@ -237,7 +236,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
 
     // get URI from bitmap
     fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
-       // fixMediaDir()
+        // fixMediaDir()
         val bytes = ByteArrayOutputStream()
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         val path: String =
@@ -251,7 +250,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
+        when (item.itemId) {
             android.R.id.home -> finish()
         }
         return true

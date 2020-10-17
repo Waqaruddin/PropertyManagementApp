@@ -1,10 +1,10 @@
-package com.example.propertymanagementapp.adapters
+package com.example.propertymanagementapp.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.propertymanagementapp.fragments.LandlordFragment
-import com.example.propertymanagementapp.fragments.TenantFragment
+import com.example.propertymanagementapp.ui.auth.fragments.LandlordFragment
+import com.example.propertymanagementapp.ui.auth.fragments.TenantFragment
 
 class AdapterFragment(fm:FragmentManager):FragmentPagerAdapter(fm){
     override fun getCount(): Int {

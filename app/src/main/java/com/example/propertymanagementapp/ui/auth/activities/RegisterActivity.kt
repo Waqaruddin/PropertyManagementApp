@@ -1,9 +1,9 @@
-package com.example.propertymanagementapp.ui.auth
+package com.example.propertymanagementapp.ui.auth.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.propertymanagementapp.R
-import com.example.propertymanagementapp.adapters.AdapterFragment
+import com.example.propertymanagementapp.ui.adapters.AdapterFragment
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
