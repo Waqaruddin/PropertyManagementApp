@@ -28,6 +28,9 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
         //setContentView(R.layout.activity_property_list)
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_property_list)
+        val viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
+        mBinding.viewModel = viewModel
+        viewModel.getPropertyListener = this
         init()
     }
 
@@ -42,10 +45,9 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
     private fun init() {
 
         setupToolbar()
-        val viewModel = ViewModelProviders.of(this).get(PropertyViewModel::class.java)
-        mBinding.viewModel = viewModel
-        viewModel.getPropertyListener = this
 
+
+        mBinding.viewModel!!.getPropertyClicked(this)
         adapterProperty = AdapterPropertyList(this, mList)
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = adapterProperty

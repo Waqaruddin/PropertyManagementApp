@@ -1,5 +1,6 @@
 package com.example.propertymanagementapp.ui.property
 
+import android.content.Context
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.propertymanagementapp.data.repositories.PropertyRepository
@@ -34,8 +35,8 @@ class PropertyViewModel : ViewModel() {
 //        getPropertyListener?.onSuccess(propertyResponse)
 //    }
 
-    fun getPropertyClicked(view:View){
-        var propertyResponse = PropertyRepository().getPropertyById(view.context)
+    fun getPropertyClicked(mcontext: Context){
+        var propertyResponse = PropertyRepository().getPropertyById(mcontext)
         getPropertyListener?.onSuccess(propertyResponse)
     }
 }

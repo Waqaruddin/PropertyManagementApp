@@ -35,17 +35,17 @@
             android:layout_weight="0.2"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_get_property"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="30dp"
-                android:background="@drawable/button_border"
-                android:onClick="@{viewModel::getPropertyClicked}"
-                android:padding="10dp"
-                android:text="get property"
-                android:textColor="#fff" />
+<!--            <Button-->
+<!--                android:id="@+id/button_get_property"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="30dp"-->
+<!--                android:background="@drawable/button_border"-->
+<!--                android:onClick="@{viewModel::getPropertyClicked}"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="get property"-->
+<!--                android:textColor="#fff" />-->
 
             <Button
                 android:id="@+id/button_add_property"
