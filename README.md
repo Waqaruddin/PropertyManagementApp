@@ -13,4 +13,6 @@ Screenshots:
 [![Screenshot-1602983706.png](https://i.postimg.cc/ZYsgkdWx/Screenshot-1602983706.png)](https://postimg.cc/JtJKZtcs)
 [![Screenshot-1602983789.png](https://i.postimg.cc/yxGr0wMb/Screenshot-1602983789.png)](https://postimg.cc/q68LTZMs)
 [![Screenshot-1602983825.png](https://i.postimg.cc/6qqm29mZ/Screenshot-1602983825.png)](https://postimg.cc/YLc3Twk2)
+[![Screenshot-1602983988.png](https://i.postimg.cc/kX424kXd/Screenshot-1602983988.png)](https://postimg.cc/Cd3hrrqv)
+[![Screenshot-1602983992.png](https://i.postimg.cc/wxFt96zV/Screenshot-1602983992.png)](https://postimg.cc/8sJkHgjJ)
 
