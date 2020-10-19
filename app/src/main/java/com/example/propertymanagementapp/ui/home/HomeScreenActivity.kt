@@ -48,7 +48,6 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
         image_view_prop.setOnClickListener(this)
         image_view_todo_list.setOnClickListener(this)
         navView.setNavigationItemSelectedListener(this)
-        image_view_alert.setOnClickListener(this)
 
 
         var toggle = ActionBarDrawerToggle(this, drawerLayout, tool_bar, 0, 0)
@@ -75,12 +74,6 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
                 startActivity(Intent(this, ToDoListActivity::class.java))
             }
 
-            image_view_alert -> {
-                var intent = Intent(Intent.ACTION_DIAL)
-                intent.setData(Uri.parse("tel:0123456789"))
-                startActivity(intent)
-            }
-
 
         }
     }
@@ -98,6 +91,11 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
             }
             R.id.item_account -> Toast.makeText(this, "account", Toast.LENGTH_SHORT).show()
             R.id.item_settings -> Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show()
+            R.id.item_contact_us -> {
+                var intent = Intent(Intent.ACTION_DIAL)
+                intent.setData(Uri.parse("tel:0123456789"))
+                startActivity(intent)
+            }
         }
         return true
     }
