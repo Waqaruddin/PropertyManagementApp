@@ -19,6 +19,7 @@ import com.example.propertymanagementapp.ui.todolist.ToDoListActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.app_bar.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 
 class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
     NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +50,19 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
         image_view_todo_list.setOnClickListener(this)
         navView.setNavigationItemSelectedListener(this)
 
+        var userName:String?
+        var userEmail:String?
+        if(sessionManager.isLoggedIn()){
+           // userName = sessionManager.getUserName()
+            userEmail = sessionManager.getUserEmail()
+        }else{
+            userName = "Guest!"
+            userEmail = "You are not signed in"
+        }
+
+        var headerView = navView.getHeaderView(0)
+        //headerView.text_view_header_name.text = userName
+        headerView.text_view_header_email.text = userEmail
 
         var toggle = ActionBarDrawerToggle(this, drawerLayout, tool_bar, 0, 0)
         drawerLayout.addDrawerListener(toggle)

@@ -87,6 +87,7 @@ class UserRepository {
                 ) {
                     if(response.isSuccessful){
                         registerResponse.value = "Registered Successfully"
+
                     }
                 }
 
