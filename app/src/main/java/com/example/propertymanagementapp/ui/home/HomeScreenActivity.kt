@@ -107,7 +107,7 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
             R.id.item_settings -> Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show()
             R.id.item_contact_us -> {
                 var intent = Intent(Intent.ACTION_DIAL)
-                intent.setData(Uri.parse("tel:0123456789"))
+                intent.setData(Uri.parse("tel:(888)-123-4567"))
                 startActivity(intent)
             }
         }

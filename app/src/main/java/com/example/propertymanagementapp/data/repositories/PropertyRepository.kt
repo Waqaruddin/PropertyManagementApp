@@ -24,17 +24,17 @@ import java.io.File
 class PropertyRepository {
     lateinit var sessionManager: SessionManager
 
-    fun addProperty(address: String, city:String, state:String, imageURL:String): LiveData<String> {
+    fun addProperty(address: String, city:String, state:String, imageURL:String): LiveData<MyProperty> {
 
-        var propertyResponse = MutableLiveData<String>()
+        var propertyResponse = MutableLiveData<MyProperty>()
         var property = MyProperty(address = address, city = city, state = state , image = imageURL)
 
         MyApi().addProperty(property)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : DisposableSingleObserver<PropertyResponse>() {
-                override fun onSuccess(t: PropertyResponse) {
-                    propertyResponse.value = "Added Property"
+            .subscribeWith(object : DisposableSingleObserver<MyProperty>() {
+                override fun onSuccess(t: MyProperty) {
+                    propertyResponse.value = t
                     Log.d("abc", t.toString())
                 }
 

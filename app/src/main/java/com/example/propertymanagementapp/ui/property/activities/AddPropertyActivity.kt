@@ -22,6 +22,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.data.models.ImageResponse
+import com.example.propertymanagementapp.data.models.MyProperty
+import com.example.propertymanagementapp.data.models.PropertyResponse
 import com.example.propertymanagementapp.data.network.MyApi
 import com.example.propertymanagementapp.databinding.ActivityAddPropertyBinding
 import com.example.propertymanagementapp.helpers.SessionManager
@@ -186,21 +188,22 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         }
     }
 
-    override fun onStarted() {
-        Toast.makeText(this, "Adding property started", Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onSuccess(response: LiveData<String>) {
-        response.observe(this, Observer {
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, PropertyListActivity::class.java))
-        })
-    }
-
-    override fun failure(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+//    override fun onStarted() {
+//        Toast.makeText(this, "Adding property started", Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onSuccess(response: LiveData<MyProperty>) {
+//        response.observe(this, Observer {
+//            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+//            finish()
+//            //startActivity(Intent(this, PropertyListActivity::class.java))
+//        })
+//    }
+//
+//    override fun failure(message: String) {
+//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+//    }
 
     // using retrofit and api
     fun uploadImage(path: String) {
@@ -255,6 +258,41 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
         }
         return true
     }
+
+    override fun onStarted() {
+       Toast.makeText(this, "Adding property started", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSuccess(response: LiveData<MyProperty>) {
+
+        response.observe(this , Observer {
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+
+            finish()
+        })
+    }
+
+    override fun failure(message: String) {
+      Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+//    override fun onStarted() {
+//        Toast.makeText(this, "Adding property started", Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onSuccess(response: LiveData<PropertyResponse>) {
+//        response.observe(this , Observer {
+//            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+//            finish()
+//
+//        })
+//    }
+//
+//    override fun failure(message: String) {
+//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+//
+//    }
 
 //    fun fixMediaDir() {
 //        val sdcard: File = Environment.getExternalStorageDirectory()

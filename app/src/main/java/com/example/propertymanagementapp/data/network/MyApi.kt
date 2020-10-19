@@ -27,7 +27,7 @@ interface MyApi {
 //    ):Call<ResponseBody>
 
     @POST("property")
-    fun addProperty(@Body property:MyProperty):Single<PropertyResponse>
+    fun addProperty(@Body property:MyProperty):Single<MyProperty>
 
     @GET("property")
     fun getProperty():Single<PropertyResponse>
