@@ -3,6 +3,7 @@ package com.example.propertymanagementapp.ui.home
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -47,6 +48,7 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
         image_view_prop.setOnClickListener(this)
         image_view_todo_list.setOnClickListener(this)
         navView.setNavigationItemSelectedListener(this)
+        image_view_alert.setOnClickListener(this)
 
 
         var toggle = ActionBarDrawerToggle(this, drawerLayout, tool_bar, 0, 0)
@@ -71,6 +73,12 @@ class HomeScreenActivity : AppCompatActivity(), View.OnClickListener,
 
             image_view_todo_list -> {
                 startActivity(Intent(this, ToDoListActivity::class.java))
+            }
+
+            image_view_alert -> {
+                var intent = Intent(Intent.ACTION_DIAL)
+                intent.setData(Uri.parse("tel:0123456789"))
+                startActivity(intent)
             }
 
 
