@@ -252,7 +252,7 @@ class AddPropertyActivity : AppCompatActivity(), PropertyListener {
 
         response.observe(this, Observer {
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-
+           startActivity(Intent(this, PropertyListActivity::class.java))
             finish()
         })
     }

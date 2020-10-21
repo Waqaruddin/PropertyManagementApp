@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.propertymanagementapp.R
 import com.example.propertymanagementapp.ui.adapters.AdapterPropertyList
 import com.example.propertymanagementapp.data.models.MyProperty
+import com.example.propertymanagementapp.data.repositories.PropertyRepository
 import com.example.propertymanagementapp.databinding.ActivityPropertyListBinding
 import com.example.propertymanagementapp.ui.property.GetPropertyListener
 import com.example.propertymanagementapp.ui.property.PropertyViewModel
@@ -56,6 +57,7 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
 
         button_add_property.setOnClickListener {
             startActivity(Intent(this, AddPropertyActivity::class.java))
+            finish()
         }
     }
 
@@ -72,6 +74,7 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
     }
 
     override fun failure(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
     }
 
@@ -81,4 +84,9 @@ class PropertyListActivity : AppCompatActivity(), GetPropertyListener {
         }
         return true
     }
+
+//    override fun onRestart() {
+//        super.onRestart()
+//        PropertyRepository().getPropertyById(this)
+//    }
 }
